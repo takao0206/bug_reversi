@@ -80,8 +80,7 @@ module ReversiMethods
   end
 
   def placeable?(board, attack_stone_color)
-    # リバーシをするためには、盤面に3種類のセル（黒石、白石、ブランク）が必要。3種類ない場合はfalseにする。
-    return false unless board.flatten.uniq.size == 3
+    place_succeed = false
 
     board.each_with_index do |cols, row|
       cols.each_with_index do |cell, col|
@@ -91,6 +90,8 @@ module ReversiMethods
         return true if put_stone(board, position.to_cell_ref, attack_stone_color, dry_run: true)
       end
     end
+
+    place_succeed
   end
 
   def count_stone(board, stone_color)

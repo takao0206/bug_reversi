@@ -80,8 +80,6 @@ module ReversiMethods
   end
 
   def placeable?(board, attack_stone_color)
-    place_succeed = false
-
     board.each_with_index do |cols, row|
       cols.each_with_index do |cell, col|
         next unless cell == BLANK_CELL
@@ -91,7 +89,7 @@ module ReversiMethods
       end
     end
 
-    place_succeed
+    false
   end
 
   def count_stone(board, stone_color)
